@@ -53,7 +53,7 @@ class NvmlCheck(AgentCheck):
             deviceCount = 0
         # Number of active GPUs
         self.gauge('nvml.gpus.number', deviceCount)
-        for device_id in xrange(deviceCount):
+        for device_id in range(deviceCount):
             handle = pynvml.nvmlDeviceGetHandleByIndex(device_id)
             name = pynvml.nvmlDeviceGetName(handle)
             tags = dict(name="{}-{}".format(name, device_id))
